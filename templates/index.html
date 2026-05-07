@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mini Search Engine</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Mini Search Engine</h1>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="query"
+                placeholder="Search here..."
+                required
+            >
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+        {% for result in results %}
+
+        <div class="result">
+
+            <h3>{{ result.file }}</h3>
+
+            <p>{{ result.content }}</p>
+
+            <small>
+                Relevance Score: {{ result.score }}
+            </small>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>
